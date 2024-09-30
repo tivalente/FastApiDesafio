@@ -3,6 +3,7 @@ from databases.interfaces import Record
 from src.database import database
 from src.models.account import accounts
 from src.schemas.account import AccountRequest
+from datetime import datetime
 
 
 class AccountService:
@@ -12,7 +13,9 @@ class AccountService:
 
     async def create(self, account: AccountRequest) -> Record:
         command = accounts.insert().values(
-            user_id=account.user_id, balance=account.balance
+            user_id=account.user_id,
+            balance=account.balance,
+            timestamp=datetime.now().timestamp(),
         )
         account_id = await database.execute(command)
 

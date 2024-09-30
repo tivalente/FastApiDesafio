@@ -33,7 +33,7 @@ tags_metadata = [
 
 
 app = FastAPI(
-    title="BankTransactions API",
+    title="Transactions API",
     version="1.0.0",
     summary="Microservice to maintain withdrawal and deposit operations from current accounts.",
     description="""
