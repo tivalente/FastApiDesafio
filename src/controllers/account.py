@@ -6,8 +6,8 @@ from src.services.account import AccountService
 from src.services.transaction import TransactionService
 from src.views.account import AccountResponse, TransactionResponse
 
-# router = APIRouter(prefix="/accounts", dependencies=[Depends(login_required)])
-router = APIRouter(prefix="/accounts")
+router = APIRouter(prefix="/accounts", dependencies=[Depends(login_required)])
+# router = APIRouter(prefix="/accounts")
 
 account_service = AccountService()
 tx_service = TransactionService()

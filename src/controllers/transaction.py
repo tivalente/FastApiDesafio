@@ -5,8 +5,8 @@ from src.security import login_required
 from src.services.transaction import TransactionService
 from src.views.transaction import TransactionResponse
 
-# router = APIRouter(prefix="/transactions", dependencies=[Depends(login_required)])
-router = APIRouter(prefix="/transactions")
+router = APIRouter(prefix="/transactions", dependencies=[Depends(login_required)])
+# router = APIRouter(prefix="/transactions")
 
 service = TransactionService()
 
