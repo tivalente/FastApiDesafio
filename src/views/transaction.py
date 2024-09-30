@@ -6,4 +6,3 @@ class TransactionResponse(BaseModel):
     account_id: int
     type: str
     amount: PositiveFloat
-    timestamp: AwareDatetime | NaiveDatetime

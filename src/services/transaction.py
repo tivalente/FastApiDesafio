@@ -27,7 +27,10 @@ class TransactionService:
         if not account:
             raise AccountNotFoundError
 
-        if transaction.type == TransactionType.WITHDRAWAL:
+        print(transaction.type)
+        print(TransactionType.WITHDRAWAL)
+
+        if transaction.type == "WITHDRAWAL":
             balance = float(account.balance) - transaction.amount
             if balance < 0:
                 raise BusinessError("Operation not carried out due to lack of balance")
@@ -46,7 +49,10 @@ class TransactionService:
         command = (
             accounts.update()
             .where(accounts.c.id == account_id)
-            .values(balance=balance, timestemp=datetime.now().timestamp())
+            .values(
+                balance=balance,
+                timestamp=datetime.now(),
+            )
         )
         await database.execute(command)
 

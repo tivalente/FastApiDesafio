@@ -1,11 +1,12 @@
 import sqlalchemy as sa
 from src.database import metadata
 from enum import Enum
+from datetime import datetime
 
 
 class TransactionType(Enum):
-    DEPOSIT = "deposit"
-    WITHDRAWAL = "withdrawal"
+    DEPOSIT = "DEPOSIT"
+    WITHDRAWAL = "WITHDRAWAL"
 
 
 transactions = sa.Table(
@@ -22,5 +23,8 @@ transactions = sa.Table(
     sa.Column(
         "type", sa.Enum(TransactionType, name="transaction_types"), nullable=False
     ),
-    sa.Column("timestamp", sa.TIMESTAMP(timezone=True), nullable=True),
+    sa.Column("amount", sa.Numeric(10, 2), nullable=False),
+    sa.Column(
+        "timestamp", sa.TIMESTAMP(timezone=True), nullable=True, default=datetime.now()
+    ),
 )
